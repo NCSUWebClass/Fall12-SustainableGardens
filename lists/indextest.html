@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>jQuery Tools standalone demo</title>
+
+    <!-- include the Tools -->
+  <script src="./jQuery Tools standalone demo_files/jquery.tools.min.js"></script>
+  
+  <!-- standalone page styling (can be removed) -->
+  <link rel="stylesheet" type="text/css" href="/main/standalone.css">
+
+  <link rel="stylesheet" href="/main/tabs.css" type="text/css" media="screen">
+<link rel="stylesheet" href="/main/tabs-panes.css" type="text/css" media="screen">
+</head>
+<body><!-- the tabs -->
+<ul class="tabs">
+		<?php
+		$counter = 1;
+		$xml = simplexml_load_file("cat.xml");
+		foreach($xml->category as $child)
+		  {
+			echo('<li><a href="#"></a>');
+			echo $child->displayname;
+			echo ('</li>');
+		   $counter++;
+		  }
+		
+
+		?>
+</ul>
+
+<!-- tab "panes" -->
+<div class="panes">
+	<div>First tab content. Tab contents are called "panes"</div>
+		<div>Second tab content</div>
+		<div>Third tab content</div>
+</div>
+Does this show up?
+
+<script>
+// perform JavaScript after the document is scriptable.
+$(function() {
+    // setup ul.tabs to work as tabs for each div directly under div.panes
+    $("ul.tabs").tabs("div.panes > div");
+});
+</script>
+
+
+</body></html>

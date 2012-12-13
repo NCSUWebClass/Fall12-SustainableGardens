@@ -1,0 +1,1 @@
+<p><img title="Cool" src="jscripts/tiny_mce/plugins/emotions/img/smiley-cool.gif" alt="Cool" border="0" /></p>

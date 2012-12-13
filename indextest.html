@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>NCSU Horticulture eCard Demo</title>
+
+    <!-- include the Tools -->
+  <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+  
+  <!-- standalone page styling (can be removed) -->
+  <link rel="stylesheet" type="text/css" href="/main/standalone.css">
+<!-- Tab Styling -->
+  <link rel="stylesheet" href="/main/tabs.css" type="text/css" media="screen">
+</head>
+<body><!-- the tabs -->
+<h2>NCSU Urban Horticulture eCard Site</h2>
+<br><br><br>
+<ul class="tabs">
+		<?php
+		$counter = 1;
+		$xml = simplexml_load_file("cat.xml");
+		foreach($xml->category as $child)
+		  {
+			if ($counter == 1)
+			{
+				echo('<li><a href="#" class="current">');
+				echo $child->displayname;
+				echo ('</a></li>');
+			}
+			else
+			{
+				echo('<li><a href="#" class="none">');
+				echo $child->displayname;
+				echo ('</a></li>');
+			}
+		   $counter++;
+		  }
+		
+
+		?>
+</ul>
+
+<!-- tab "panes" -->
+<div class="panes">
+		<?php
+		$counter = 1;
+		$xml = simplexml_load_file("cat.xml");
+		foreach($xml->category as $child)
+		  {
+			$counter=1;
+			echo('<div>');
+				$images = file(getcwd()."/categories/".$child->name.".dat");
+				foreach($images as $values)
+				{
+					echo '<input type="image" src="';
+					echo"http://ecard.comule.com/flowers".$values."image.jpg";
+					echo '"width="100" height="100"" onclick="email_send(this.value)" name="image" value="';
+					echo($child->name);
+					echo('" />');
+					if($counter==10)
+					{
+						echo'</br>';
+						$counter = 1;
+					}
+					else
+					{
+						$counter++;
+					}
+				}
+			echo ('</div>');
+		   $counter++;
+		  }
+		
+
+		?>
+</div>
+
+<script>
+// perform JavaScript after the document is scriptable.
+$(function() {
+
+    $("ul.tabs").tabs("div.panes > div");
+});
+</script>
+
+
+</body></html>
