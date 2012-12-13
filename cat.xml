@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<card>
+  <category>
+		<name>birthday</name>
+		<displayname> Happy Birthday</displayname>
+	</category>
+	<category>
+		<name>earthday</name>
+		<displayname> Happy Earthday</displayname>
+	</category>
+	<category>
+		<name>christmas</name>
+		<displayname> Merry Christmas</displayname>
+	</category>
+<category><name> Testing</name><displayname> Testing</displayname></category><category><name> tester</name><displayname> tester</displayname></category><category><name> tester2</name><displayname> tester2</displayname></category></card>
